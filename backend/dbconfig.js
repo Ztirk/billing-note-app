@@ -1,7 +1,7 @@
 const config = {
-  user: "sa", // sql user
-  password: "aab-gps-gtt", //sql user password
-  server: "10.0.10.70", // if it does not work try- localhost
+  user: "kt-devo", // sql user
+  password: "1q2w&dev", //sql user password
+  server: "10.2.10.220", // if it does not work try- localhost
   database: "ZebraDB",
   options: {
     encrypt: false,
