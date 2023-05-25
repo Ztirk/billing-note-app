@@ -9,7 +9,9 @@ const router = express.Router();
 app.use(cors());
 app.use("/api", router);
 
-router.get("/info/:id", query.getInfoById)
+router.put("/info/:vid/:device/:price/:detail", query.updateInfo);
+
+router.get("/info/:id", query.getInfoById);
 
 router.get("/data/:id", query.getDataByFleetId);
 

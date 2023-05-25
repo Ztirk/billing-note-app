@@ -57,8 +57,28 @@ const getInfoById = async (req, res) => {
   }
 };
 
+const updateInfo = async (req, res) => {
+  try {
+    const params = await req.params;
+    const pool = await sql.connect(config);
+    const result = await pool
+      .request()
+      .input("vid", sql.Int, params.vid)
+      .input("device", sql.VarChar, params.device)
+      .input("price", sql.Int, params.price)
+      .input("detail", sql.VarChar, params.detail)
+      .query(`UPDATE ZebraDB_Report..RPVehicleInFleet_PriceDetail
+              SET Device = @device, Price = @price, Detail_Type = @detail
+              WHERE Veh_id = @vid`);
+    res.json(result.recordset);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 module.exports = {
-  getData: getData,
-  getDataByFleetId: getDataByFleetId,
-  getInfoById: getInfoById,
+  getData,
+  getDataByFleetId,
+  getInfoById,
+  updateInfo,
 };

@@ -13,8 +13,8 @@
     "axios": "^1.3.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sheetjs": "^2.0.0",
-    "sheetjs-style": "^0.15.8"
+    "sheetjs-style": "^0.15.8",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

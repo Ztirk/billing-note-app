@@ -3,13 +3,13 @@ import Calculation from "./Calculation";
 
 function Data(props) {
   const handleDelete = (e) => {
-   e.currentTarget.parentElement.parentElement.remove();
+    e.currentTarget.parentElement.parentElement.remove();
   };
 
   const handleAdd = () => {
     const tbodyNode = document.getElementById("tbody");
     const delBtn = document.getElementsByName("delete-btn")[0].cloneNode(true);
-    delBtn.addEventListener("click", handleDelete)
+    delBtn.addEventListener("click", handleDelete);
 
     for (let r = 0; r < 1; r++) {
       const trNode = document.createElement("tr");
@@ -25,12 +25,12 @@ function Data(props) {
           display: flex;
           justify-content: center;
           align-items: center;
-        `
+        `;
         } else if (c < 9) {
           tdNode.setAttribute("contentEditable", "true");
           tdNode.style.cssText = `
           border: 1px solid black
-        `
+        `;
         }
       }
 
@@ -46,37 +46,24 @@ function Data(props) {
 
   return (
     <>
-      <div className="w-full h-[400px] overflow-y-scroll border border-black">
-        <table className={props.active ? " w-full" : " hidden"} id="tblToExcl">
+      <div className="w-full h-[400px] overflow-y-scroll border-y border-black">
+        <table
+          className={props.active ? " w-full border-separate" : " hidden"}
+          id="tblToExcl"
+        >
           <thead>
-            <tr className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px]">
-              <th className="border border-black break-all">
-                ลำดับที่
-              </th>
-              <th className="border border-black break-all">
-                วันที่ติดตั้ง
-              </th>
-              <th className="border border-black break-all">
-                VID
-              </th>
-              <th className="border border-black break-all">
-                รุ่นรถ
-              </th>
-              <th className="border border-black break-all">
-                ทะเบียนรถ
-              </th>
-              <th className="border border-black break-all">
-                อุปกรณ์
-              </th>
+            <tr className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_50px] bg-slate-100">
+              <th className="border border-black break-all">ลำดับที่</th>
+              <th className="border border-black break-all">วันที่ติดตั้ง</th>
+              <th className="border border-black break-all">VID</th>
+              <th className="border border-black break-all">รุ่นรถ</th>
+              <th className="border border-black break-all">ทะเบียนรถ</th>
+              <th className="border border-black break-all">อุปกรณ์</th>
               <th className="border border-black break-all" id="ยอดรวม">
                 ยอดรวม
               </th>
-              <th className="border border-black break-all">
-                ประเภท
-              </th>
-              <th className="border border-black break-all">
-                เลขตัวถัง
-              </th>
+              <th className="border border-black break-all">ประเภท</th>
+              <th className="border border-black break-all">เลขตัวถัง</th>
               <th className="border border-black break-all"></th>
             </tr>
           </thead>
@@ -133,7 +120,7 @@ function Data(props) {
                   contentEditable="true"
                   suppressContentEditableWarning={true}
                 >
-                  {d.ยอดรวม}
+                  {d.ยอดรวม ? d.ยอดรวม.toFixed(2) : ""}
                 </td>
                 <td
                   className="border border-black break-all"
@@ -151,7 +138,7 @@ function Data(props) {
                 </td>
                 <td className="border border-black justify-center items-center flex">
                   <i
-                    className="fa-regular fa-circle-xmark cursor-pointer"
+                    className="fa-regular fa-circle-xmark cursor-pointer text-red-500"
                     onClick={handleDelete}
                     name="delete-btn"
                   ></i>
@@ -160,10 +147,10 @@ function Data(props) {
             )) || <></>}
           </tbody>
           <tfoot>
-            <tr className=" col-span-10 border border-black flex justify-center">
+            <tr className=" col-span-10 border border-black flex justify-center rounded-b">
               <td>
                 <i
-                  className="fa-solid fa-circle-plus cursor-pointer"
+                  className="fa-solid fa-circle-plus cursor-pointer text-green-500"
                   onClick={handleAdd}
                 ></i>
               </td>
